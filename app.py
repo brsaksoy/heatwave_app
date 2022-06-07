@@ -3,11 +3,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
-Belgium_map = gpd.GeoDataFrame.from_file('../data/arrondissements_shape/arrondissements_shape.shp')
+Belgium_map = gpd.GeoDataFrame.from_file('data/arrondissements_shape/arrondissements_shape.shp')
 #All four files (.dbf, .ptj, .shp, .shx) should be in the same folder, otherwise there are errors with reading the shapefile.
 
-heat_fr = pd.read_csv('../out/hw_freq_df.csv')
-heat_intens = pd.read_csv('../out/hw_int_df.csv')
+heat_fr = pd.read_csv('out/hw_freq_df.csv')
+heat_intens = pd.read_csv('out/hw_int_df.csv')
 
 Belgium_shapes = Belgium_map[['geometry', 'INS','Name1']]
 Belgium_shapes = Belgium_shapes.rename(columns ={'INS':'arron'})
@@ -34,9 +34,9 @@ json_intens= geo_intens.__geo_interface__
 geo_freq=Belgium_shapes_merge.to_crs(epsg=4326)
 json_freq= geo_freq.__geo_interface__ 
 
-pooled=pd.read_csv('../data/pooled_relationship_plot.csv')
-predreg=pd.read_csv('../data/blup_fs_region.csv')
-studyspe=pd.read_csv('../data/temp_preds_model_arron.csv')
+pooled=pd.read_csv('data/pooled_relationship_plot.csv')
+predreg=pd.read_csv('data/blup_fs_region.csv')
+studyspe=pd.read_csv('data/temp_preds_model_arron.csv')
 predreg=predreg.rename(columns={"blup_matRRfit":"BLUP","first_stage_blup_matRRfit":"First_stage"})
 
 from dash import Dash, dcc, html
