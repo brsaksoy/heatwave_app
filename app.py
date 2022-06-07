@@ -64,7 +64,7 @@ for i in range(len(predreg.arron.unique())):
 
     
 app = Dash(__name__)
-
+server=app.server
 fig4 = px.line(studyspe, x="temp", y="y",color='arron')
 fig4.update_layout(title="Study Specific",title_x=0.5,
                    xaxis_title='Temperature',
