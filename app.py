@@ -132,5 +132,5 @@ def change_city(city):
     fig.show()
     return fig
 
-
-app.run_server(debug=True)
+if  __name__=="__main__":  
+    app.run_server(debug=True)
